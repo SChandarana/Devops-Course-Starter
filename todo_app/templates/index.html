@@ -2,42 +2,42 @@
 {% block title %}To-Do App{% endblock %}
 
 {% block content %}
-  <div class="jumbotron">
-    <h1 class="display-4">To-Do App</h1>
-    <p class="lead">Just another to-do app.</p>
-  </div>
+<div class="jumbotron">
+  <h1 class="display-4">To-Do App</h1>
+  <p class="lead">Just another to-do app.</p>
+</div>
 
-  <div class="row">
-    <div class="col-md-6">
-      <h2>To Do</h2>
-      <ul class="list-group mb-4">
-        {% for item in todo_items %}
-        <li>
-          <form method="post" action='{{ url_for("completeItem", id=item.id) }}'>
-            {{ item.name }}
+<div class="row">
+  <div class="col-md-6">
+    <h2>To Do</h2>
+    <ul class="list-group mb-4">
+      {% for item in todo_items %}
+      <li>
+        <form method="post" action='{{ url_for("completeItem", id=item.id) }}'>
+          {{ item.name }}
           <button type="submit">Mark as done!</button>
-          </form>
-        </li>
-        {% endfor %}
-      </ul>
-    </div>
-    <div class="col-md-6">
-      <h2>Done!</h2>
-      <ul class="list-group mb-4">
-        {% for item in done_items %}
-        <li>{{ item.name }}</li>
-        {% endfor %}
-      </ul>
-    </div>
+        </form>
+      </li>
+      {% endfor %}
+    </ul>
   </div>
-  <div class="row">
-    <div class="col-md-12">
-      <h2>Add an Item!</h2>
-      <form method="post" action="add">
-        <label for="title">Title:</label>
-        <input required id="title" type="text" name="title"/>
-        <button type="submit">Add!</button>
-      </form>
-    </div>
+  <div class="col-md-6">
+    <h2>Done!</h2>
+    <ul class="list-group mb-4">
+      {% for item in done_items %}
+      <li>{{ item.name }}</li>
+      {% endfor %}
+    </ul>
   </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <h2>Add an Item!</h2>
+    <form method="post" action="add">
+      <label for="title">Title:</label>
+      <input required id="title" type="text" name="title" />
+      <button type="submit">Add!</button>
+    </form>
+  </div>
+</div>
 {% endblock %}

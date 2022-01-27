@@ -36,7 +36,7 @@ The `.env` file is used by flask to set environment variables when running `flas
 
 To use this app, a Trello account is required. This can be made for free on the [Trello Website](https://trello.com/). And then follow [these instructions](https://trello.com/app-key/) for obtaining an API key and token for the `.env` file. 
 
-You will also need to create a board with 2 columns, one named `To Do` and the other named `Done`. Use this board as the `TRELLO_BOARD_ID` in the `.env` file.
+You will also need to create a board with 3 columns: `'To Do'`, `'Doing'` and `'Done'`. Use this board as the `TRELLO_BOARD_ID` in the `.env` file.
 
 ## Running the App
 
