@@ -1,11 +1,8 @@
-from todo_app.data.trello_items import get_items_from_column
-
-
 class IndexPageViewModel:
-    def __init__(self) -> None:
-        self._todo_items = get_items_from_column('To Do')
-        self._doing_items = get_items_from_column('Doing')
-        self._done_items = get_items_from_column('Done')
+    def __init__(self, todo_items, doing_items, done_items) -> None:
+        self._todo_items = todo_items
+        self._doing_items = doing_items
+        self._done_items = done_items
 
     @property
     def todo_items(self):
@@ -18,4 +15,3 @@ class IndexPageViewModel:
     @property
     def done_items(self):
         return self._done_items
-

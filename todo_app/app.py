@@ -1,5 +1,5 @@
 from flask import Flask, render_template, redirect, request
-from todo_app.data.trello_items import add_item_to_column, move_item_to_column
+from todo_app.data.trello_items import add_item_to_column, get_items_from_column, move_item_to_column
 from todo_app.view_models.index_page_view_model import IndexPageViewModel
 
 app = Flask(__name__)
@@ -9,7 +9,11 @@ app = Flask(__name__)
 def index():
     return render_template(
         'index.html',
-        model=IndexPageViewModel()
+        model=IndexPageViewModel(
+            todo_items=get_items_from_column('To Do'),
+            doing_items=get_items_from_column('Doing'),
+            done_items=get_items_from_column('Done')
+        )
     )
 
 
