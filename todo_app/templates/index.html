@@ -8,10 +8,10 @@
 </div>
 
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-4">
     <h2>To Do</h2>
     <ul class="list-group mb-4">
-      {% for item in todo_items %}
+      {% for item in model.todo_items %}
       <li>
         <form method="post" action='{{ url_for("completeItem", id=item.id) }}'>
           {{ item.name }}
@@ -21,10 +21,18 @@
       {% endfor %}
     </ul>
   </div>
-  <div class="col-md-6">
+  <div class="col-md-4">
+    <h2>Doing</h2>
+    <ul class="list-group mb-4">
+      {% for item in model.doing_items %}
+      <li>{{ item.name }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="col-md-4">
     <h2>Done!</h2>
     <ul class="list-group mb-4">
-      {% for item in done_items %}
+      {% for item in model.done_items %}
       <li>{{ item.name }}</li>
       {% endfor %}
     </ul>
