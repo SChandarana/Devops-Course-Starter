@@ -1,17 +1,15 @@
 class IndexPageViewModel:
-    def __init__(self, todo_items, doing_items, done_items) -> None:
-        self._todo_items = todo_items
-        self._doing_items = doing_items
-        self._done_items = done_items
+    def __init__(self, items) -> None:
+        self._all_items = items
 
     @property
     def todo_items(self):
-        return self._todo_items
+        return [item for item in self._all_items if item.status == 'To Do']
 
     @property
     def doing_items(self):
-        return self._doing_items
+        return [item for item in self._all_items if item.status == 'Doing']
 
     @property
     def done_items(self):
-        return self._done_items
+        return [item for item in self._all_items if item.status == 'Done']

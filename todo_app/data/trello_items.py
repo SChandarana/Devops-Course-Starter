@@ -1,4 +1,5 @@
 import os
+from pyparsing import col
 import requests
 
 from todo_app.data.item import Item
@@ -11,7 +12,7 @@ def generate_params(params):
     return {**authentication_params, **params}
 
 
-def get_trello_column_list_from_name(column_name):
+def get_all_trello_column_lists():
     board_id = os.getenv('TRELLO_BOARD_ID')
     url = (f'https://api.trello.com/1/boards/{board_id}/lists')
 
@@ -21,7 +22,13 @@ def get_trello_column_list_from_name(column_name):
                                 'fields': 'name'})
     )
 
-    for column_list in response.json():
+    return response.json()
+
+
+def get_trello_column_list_from_name(column_name):
+    all_lists = get_all_trello_column_lists()
+
+    for column_list in all_lists:
         if column_list['name'] == column_name:
             return column_list
 
@@ -29,12 +36,20 @@ def get_trello_column_list_from_name(column_name):
         f'Could not find column with name {column_name} in this board')
 
 
-def get_items_from_column(column_name):
-    column_list = get_trello_column_list_from_name(column_name)
+def get_items_from_column(column_list):
     items = []
     for card in column_list['cards']:
         items.append(Item.from_trello_card(card, column_list))
     return items
+
+
+def get_all_items():
+    all_lists = get_all_trello_column_lists()
+    all_items = []
+    for column_list in all_lists:
+        all_items += get_items_from_column(column_list)
+
+    return all_items
 
 
 def get_column_id(column_name):

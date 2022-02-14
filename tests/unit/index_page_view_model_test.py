@@ -15,10 +15,12 @@ done_items = [
     Item('id_6', 'title_6', 'Done')
 ]
 
+all_items = todo_items + doing_items + done_items
+
 
 @pytest.fixture
 def view_model():
-    return IndexPageViewModel(todo_items, doing_items, done_items)
+    return IndexPageViewModel(all_items)
 
 
 def test_view_model_todo_items(view_model: IndexPageViewModel):
