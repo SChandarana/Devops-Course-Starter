@@ -3,21 +3,19 @@ import requests
 
 from todo_app.data.item import Item
 
-key = os.getenv('TRELLO_SECRET_KEY')
-token = os.getenv('TRELLO_SECRET_TOKEN')
-board_id = os.getenv('TRELLO_BOARD_ID')
-
 
 def generate_params(params):
+    key = os.getenv('TRELLO_SECRET_KEY')
+    token = os.getenv('TRELLO_SECRET_TOKEN')
     authentication_params = {'key': key, 'token': token}
     return {**authentication_params, **params}
 
 
 def get_trello_column_list_from_name(column_name):
+    board_id = os.getenv('TRELLO_BOARD_ID')
     url = (f'https://api.trello.com/1/boards/{board_id}/lists')
 
-    response = requests.request(
-        'GET',
+    response = requests.get(
         url,
         params=generate_params({'cards': 'open',
                                 'fields': 'name'})
@@ -48,8 +46,7 @@ def add_item_to_column(item, column_name):
 
     url = 'https://api.trello.com/1/cards'
 
-    requests.request(
-        'POST',
+    requests.post(
         url,
         params=generate_params({'name': item,
                                 'idList': column_id})
@@ -61,8 +58,7 @@ def move_item_to_column(item_id, column_name):
 
     url = (f'https://api.trello.com/1/cards/{item_id}')
 
-    requests.request(
-        'PUT',
+    requests.put(
         url,
         params=generate_params({'idList': column_id})
     )

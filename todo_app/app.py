@@ -3,7 +3,7 @@ from todo_app.data.trello_items import add_item_to_column, get_items_from_column
 from todo_app.view_models.index_page_view_model import IndexPageViewModel
 
 
-def createApp():
+def create_app():
 
     app = Flask(__name__)
 
