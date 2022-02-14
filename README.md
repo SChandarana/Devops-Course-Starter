@@ -30,13 +30,13 @@ You'll also need to clone a new `.env` file from the `.env.template` to store lo
 $ cp .env.template .env  # (first time only)
 ```
 
-The `.env` file is used by flask to set environment variables when running `flask run`. This enables things like development mode (which also enables features like hot reloading when you make a file change). You will need to populate the `TRELLO_SECRET_KEY`, `TRELLO_SECRET_TOKEN` and `TRELLO_BOARD_ID` in this `.env` file with your own values, obtained from the next step.
+The `.env` file is used by flask to set environment variables when running `flask run`. You will need to populate the values in this with your own api keys/secrets 
 
 ## Trello
 
 To use this app, a Trello account is required. This can be made for free on the [Trello Website](https://trello.com/). And then follow [these instructions](https://trello.com/app-key/) for obtaining an API key and token for the `.env` file. 
 
-You will also need to create a board with 3 columns: `'To Do'`, `'Doing'` and `'Done'`. Use this board as the `TRELLO_BOARD_ID` in the `.env` file.
+You will also need to create a board with 3 columns: `'To Do'`, `'Doing'` and `'Done'`
 
 ## Running the App
 
