@@ -1,6 +1,6 @@
 import os
-from pyparsing import col
 import requests
+import urllib3
 
 from todo_app.data.item import Item
 
@@ -71,7 +71,8 @@ def add_item_to_column(item, column_name):
 def move_item_to_column(item_id, column_name):
     column_id = get_column_id(column_name)
 
-    url = (f'https://api.trello.com/1/cards/{item_id}')
+    url = (
+        f'https://api.trello.com/1/cards/{urllib3.parse.quote(item_id, safe="")}')
 
     requests.put(
         url,
