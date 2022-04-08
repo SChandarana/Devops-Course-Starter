@@ -1,0 +1,6 @@
+- name: Test Playbook
+  hosts: webservers
+  remote_user: ec2-user
+
+  tasks:
+  
