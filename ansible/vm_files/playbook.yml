@@ -14,3 +14,21 @@
     ansible.builtin.shell: curl -sSL https://install.python-poetry.org | python3 -
     args:
       creates: ~/.local/bin/poetry
+
+  - name: Create Directory for Todo app
+    ansible.builtin.file:
+      path: /opt/todoapp
+      state: directory
+      mode: "777"
+    become: true
+  
+  - name: Clone git repository
+    ansible.builtin.git:
+      repo: https://github.com/SChandarana/Devops-Course-Starter
+      dest: /opt/todoapp
+      version: main
+  
+  - name: Install Project Dependencies
+    ansible.builtin.shell: source ~/.bash_profile; poetry install
+    args: 
+      chdir: /opt/todoapp
