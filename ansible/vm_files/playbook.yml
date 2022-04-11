@@ -35,7 +35,7 @@
     ansible.builtin.git:
       repo: https://github.com/SChandarana/Devops-Course-Starter
       dest: /opt/todoapp
-      version: module-4
+      version: main
   
   - name: Install Project Dependencies
     ansible.builtin.shell: source ~/.bash_profile; poetry install
