@@ -74,3 +74,9 @@ $ sh ansible/copy_to_vm.sh
 ```
 
 This will copy all files from `ansible/vm_files/` into `/home/ec2-user` on the control node
+
+To run the playbook, ssh into the control node and run
+
+```bash
+$ ansible-playbook vm_files/playbook.yml -i vm_files/inventory
+```
