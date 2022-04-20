@@ -64,3 +64,19 @@ This project uses pytest. To run all the tests use:
 ```bash
 $ poetry run pytest tests
 ```
+
+## Ansible
+
+If changing or adding new files for ansible you will want to load them into the control node by running the following in the root of this project.
+
+```bash
+$ sh ansible/copy_to_vm.sh
+```
+
+This will copy all files from `ansible/vm_files/` into `/home/ec2-user` on the control node
+
+To run the playbook, ssh into the control node and run
+
+```bash
+$ ansible-playbook vm_files/playbook.yml -i vm_files/inventory
+```
