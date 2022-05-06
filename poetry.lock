@@ -90,7 +90,7 @@ dotenv = ["python-dotenv"]
 name = "gunicorn"
 version = "20.1.0"
 description = "WSGI HTTP Server for UNIX"
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.5"
 
@@ -331,7 +331,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "4fe777e87c7265db23412537611ecfa9f0a7db26fc65d4771e3547bfcb6df1d0"
+content-hash = "565534b1597fa05eb151a7a24687443e0f217da9a6011c119398edc087d1b7ce"
 
 [metadata.files]
 atomicwrites = [
