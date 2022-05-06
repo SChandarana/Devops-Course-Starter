@@ -80,3 +80,19 @@ To run the playbook, ssh into the control node and run
 ```bash
 $ ansible-playbook vm_files/playbook.yml -i vm_files/inventory
 ```
+
+## Docker
+
+To run the app using docker, you can do the following:
+
+First, build the docker image using
+```bash
+$ docker build --tag todo-app .
+```
+
+Then you can run the app using
+```bash
+$ docker run -d -p 8080:8080 --env-file ./.env todo-app
+```
+
+You can then visit [`http://localhost:8080/`](http://localhost:8080/) to see the app running through docker
