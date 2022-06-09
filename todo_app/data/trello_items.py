@@ -1,6 +1,6 @@
 import os
 import requests
-import urllib3
+import urllib
 
 from todo_app.data.item import Item
 
@@ -72,7 +72,7 @@ def move_item_to_column(item_id, column_name):
     column_id = get_column_id(column_name)
 
     url = (
-        f'https://api.trello.com/1/cards/{urllib3.parse.quote(item_id, safe="")}')
+        f'https://api.trello.com/1/cards/{urllib.parse.quote(item_id, safe="")}')
 
     requests.put(
         url,
