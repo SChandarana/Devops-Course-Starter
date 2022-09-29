@@ -103,12 +103,13 @@ To run in dev mode:
 ```bash
 $ docker run --env-file ./.env -p 5100:5000 --mount type=bind,source=$(pwd)/todo_app,target=/todo-app/todo_app todo-app:dev
 ```
+You can then visit [`http://localhost:5100/`](http://localhost:5100/) to see the dev app
 
 To run in prod mode:
 ```bash
-$ docker run --env-file ./.env -p 5100:5000 --mount type=bind,source=$(pwd)/todo_app,target=/todo-app/todo_app todo-app:dev
+$ docker run --env-file ./.env -p 8080:80 --mount type=bind,source=(pwd)/todo_app,target=/todo-app/todo_app todo-app:prod
 ```
+You can then visit [`http://localhost:8080/`](http://localhost:8080/) to see the prod app
 
 N.B. If you are using the fish terminal then you will need to omit the `$`
 
-You can then visit [`http://localhost:8080/`](http://localhost:8080/) to see the app running through docker
