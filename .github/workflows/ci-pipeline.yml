@@ -27,7 +27,7 @@ jobs:
       - name: Log into dockerhun
         run: echo ${{ secrets.DOCKERHUB_ACCESS_TOKEN }} | docker login -u schandarana --password-stdin
       - name: Build production image
-        run: docker build --target production --tag todo-app:$GITHUB_SHA 
+        run: docker build --target production --tag todo-app:$GITHUB_SHA .
       - name: Push image to dockerhub
         run: docker push todo-app:$GITHUB_SHA
 
