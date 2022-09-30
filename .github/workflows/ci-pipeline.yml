@@ -39,5 +39,5 @@ jobs:
       - name: push image to heroku
         run: docker push registry.heroku.com/shiv-devops-course-starter/web
       - name: release heroku app
-        run: heroku container:release web shiv-devops-course-starter
+        run: heroku container:release web -a shiv-devops-course-starter
 
