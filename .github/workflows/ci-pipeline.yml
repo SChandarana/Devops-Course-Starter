@@ -24,4 +24,4 @@ jobs:
     if: github.event_name == 'push' && github.ref == 'refs/heads/module-8'
     steps:
       - uses: actions/checkout@v2
-      - run: echo "publishing"
+      - run: echo ${{ secrets.DOCKERHUB_ACCESS_TOKEN }} | docker login -u schandarana --password-stdin
