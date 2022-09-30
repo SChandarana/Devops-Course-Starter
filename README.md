@@ -132,4 +132,6 @@ $ docker run --env-file ./.env -p 8080:80 todo-app:prod
 ```
 You can then visit [`http://localhost:8080/`](http://localhost:8080/) to see the prod app
 
+## Heroku
 
+The app is hosted on heroku, when a change reaches the main branch, it will be deployed and accessible at [`https://shiv-devops-course-starter.herokuapp.com/`](https://shiv-devops-course-starter.herokuapp.com/)
