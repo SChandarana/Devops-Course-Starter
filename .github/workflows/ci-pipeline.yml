@@ -15,4 +15,4 @@ jobs:
       - name: Build docker image for tests
         run: docker build --target test --tag todo-app:test .
       - name: Run tests from docker image
-        run: docker run rodo-app:test 
+        run: docker run todo-app:test 
