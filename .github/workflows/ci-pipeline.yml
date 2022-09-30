@@ -33,6 +33,8 @@ jobs:
       - name: Update image tag 
         run: docker tag schandarana/todo-app:latest registry.heroku.com/shiv-devops-course-starter/web
       - name: Login to heroku container registry
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         run: heroku container:login
       - name: push image to heroku
         run: docker push registry.heroku.com/shiv-devops-course-starter/web
