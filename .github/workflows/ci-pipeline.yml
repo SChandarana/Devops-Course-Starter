@@ -8,11 +8,11 @@ on:
       - '**.md'
 jobs:
   build:
-  name: Build and test
-  runs-on: ubuntu-latest
-  steps:
-  - uses: actions/checkout@v2
-  - name: Build docker image for tests
-    run: docker build --target test --tag todo-app:test .
-  - name: Run tests from docker image
-    run: docker run rodo-app:test 
+    name: Build and test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build docker image for tests
+        run: docker build --target test --tag todo-app:test .
+      - name: Run tests from docker image
+        run: docker run rodo-app:test 
