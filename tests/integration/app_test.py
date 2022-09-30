@@ -21,7 +21,7 @@ def test_index_page(monkeypatch, client):
     response = client.get('/')
 
     assert response.status_code == 200
-    assert 'todo_cardTHISSHOULDFAIL' in response.data.decode()
+    assert 'todo_card' in response.data.decode()
     assert 'doing_card' in response.data.decode()
     assert 'done_card' in response.data.decode()
 
