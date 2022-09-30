@@ -30,4 +30,9 @@ jobs:
         run: docker build --target production --tag schandarana/todo-app:$GITHUB_SHA --tag schandarana/todo-app:latest .
       - name: Push image to dockerhub
         run: docker push schandarana/todo-app --all-tags
+      - name: Update image tag and push to heroku
+        run: docker tag schandarana/todo-app:latest registry.heroku.com/shiv-devops-course-starter/web
+        run: heroku container:login
+        run: docker push registry.heroku.com/shiv-devops-course-starter/web
+        run: heroku container:release web shiv-devops-course-starter
 
