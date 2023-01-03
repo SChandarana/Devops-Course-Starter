@@ -1,0 +1,37 @@
+version: "3"
+services:
+  todo-app-dev:
+    container_name: todo-app-dev
+    image: todo-app:dev
+    build:
+      context: .
+      target: development
+      dockerfile: Dockerfile
+    ports:
+      - 5100:5000
+    volumes:
+      - ./todo_app:/todo-app/todo_app 
+    env_file:
+      - ".env"
+
+  todo-app-prod:
+    container_name: todo-app-prod
+    image: todo-app:prod
+    build:
+      context: .
+      target: production
+      dockerfile: Dockerfile
+    ports:
+      - 8080:80
+    env_file:
+      - ".env"
+
+  todo-app-test:
+    container_name: todo-app-test
+    image: todo-app:test
+    build:
+      context: .
+      target: test
+      dockerfile: Dockerfile
+    env_file:
+      - ".env.test"

@@ -85,6 +85,25 @@ $ ansible-playbook vm_files/playbook.yml -i vm_files/inventory
 
 To run the app using docker, you can do the following:
 
+### Docker Compose
+
+To run in dev mode:
+```bash
+$ docker compose up --build todo-app-dev
+```
+
+To run in prod mode:
+```bash
+$ docker compose up --build todo-app-prod
+```
+
+To run the tests:
+```bash
+$ docker compose up --build todo-app-test
+```
+
+### Manually without docker compose
+
 First, build the dev and prod docker images:
 
 For the dev image run:
@@ -103,12 +122,14 @@ To run in dev mode:
 ```bash
 $ docker run --env-file ./.env -p 5100:5000 --mount type=bind,source=$(pwd)/todo_app,target=/todo-app/todo_app todo-app:dev
 ```
-
-To run in prod mode:
-```bash
-$ docker run --env-file ./.env -p 5100:5000 --mount type=bind,source=$(pwd)/todo_app,target=/todo-app/todo_app todo-app:dev
-```
+You can then visit [`http://localhost:5100/`](http://localhost:5100/) to see the dev app
 
 N.B. If you are using the fish terminal then you will need to omit the `$`
 
-You can then visit [`http://localhost:8080/`](http://localhost:8080/) to see the app running through docker
+To run in prod mode:
+```bash
+$ docker run --env-file ./.env -p 8080:80 todo-app:prod
+```
+You can then visit [`http://localhost:8080/`](http://localhost:8080/) to see the prod app
+
+
