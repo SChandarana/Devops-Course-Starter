@@ -7,6 +7,7 @@ RUN poetry config virtualenvs.create false --local
 FROM base AS production
 RUN poetry install --no-dev
 COPY todo_app ./todo_app
+ENV PORT=80
 CMD poetry run gunicorn --bind 0.0.0.0:${PORT} "wsgi:start()" 
 
 FROM base AS development
